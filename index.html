@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PartyUp - ゲームマッチングアプリ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 PartyUp</h1>
+            <p>ゲーマー同士のマッチングプラットフォーム</p>
+        </header>
+
+        <!-- ログイン画面 -->
+        <div id="loginScreen" class="screen active">
+            <div class="card">
+                <h2>ようこそ</h2>
+                <form id="loginForm">
+                    <input type="text" id="username" placeholder="ユーザー名" required>
+                    <select id="gameGenre" required>
+                        <option value="">ゲームジャンルを選択</option>
+                        <option value="fps">FPS</option>
+                        <option value="rpg">RPG</option>
+                        <option value="moba">MOBA</option>
+                        <option value="racing">レーシング</option>
+                        <option value="fighting">格闘ゲーム</option>
+                    </select>
+                    <input type="number" id="skillLevel" placeholder="スキルレベル (1-10)" min="1" max="10" required>
+                    <button type="submit" class="btn btn-primary">開始</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- 掲示板画面 -->
+        <div id="boardScreen" class="screen">
+            <div class="board-header">
+                <h2>パーティ募集掲示板</h2>
+                <button id="createPostBtn" class="btn btn-primary btn-small">+ 募集を作成</button>
+            </div>
+
+            <div id="postsContainer" class="posts-container">
+                <!-- 募集投稿がここに表示されます -->
+            </div>
+
+            <div id="boardNotification" class="notification hidden">
+                <p id="boardNotificationText"></p>
+            </div>
+        </div>
+
+        <!-- 募集作成モーダル -->
+        <div id="createPostModal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>パーティ募集を作成</h3>
+                    <button class="close-btn" id="closeModalBtn">&times;</button>
+                </div>
+                <form id="createPostForm">
+                    <input type="text" id="gameTitle" placeholder="ゲーム名" required>
+                    <textarea id="postDescription" placeholder="募集内容・説明" rows="3" required></textarea>
+                    <input type="number" id="recruitCount" placeholder="募集人数" min="1" max="10" required>
+                    <input type="number" id="minSkillLevel" placeholder="最小スキルレベル (1-10)" min="1" max="10" required>
+                    <div class="modal-buttons">
+                        <button type="submit" class="btn btn-primary">作成</button>
+                        <button type="button" class="btn btn-secondary" id="cancelPostBtn">キャンセル</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- メニュー -->
+        <nav class="menu">
+            <button id="boardBtn" class="menu-btn active">掲示板</button>
+            <button id="myPostsBtn" class="menu-btn">マイ募集</button>
+            <button id="profileBtn" class="menu-btn">プロフィール</button>
+        </nav>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
